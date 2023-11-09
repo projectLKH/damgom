@@ -3,15 +3,16 @@ package project.damgom.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttribute;
 import project.damgom.Service.VacationRequestRepositoryService;
+import project.damgom.dto.VacationRequestDTO;
 import project.damgom.entity.VacationRequest;
 import project.damgom.repository.VacationRequestRepository;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Controller
@@ -23,14 +24,31 @@ public class VacationRequestRepositoryController {
     VacationRequestRepositoryService vacationRequestRepositoryService;
 
 
+    //vacationRequest table의 내용을 list 로 가져옴
     @GetMapping("list")
-    public String vacation_List(Model model){
+    public String vacation_List(Model model) {
         List<VacationRequest> findAll = vacationRequestRepository.findAll();
-
-        model.addAttribute("findAll",findAll);
-
+        model.addAttribute("findAll", findAll);
         return "/vacationRequest/list";
     }
+
+
+    //직원 이  vacation_submitted 를 하는 save 문구
     @RequestMapping("/request")
-    public void vacation_submitted()a
+    public String vacation_submitted(VacationRequestDTO vacationRequestDTO){
+        VacationRequest vacationRequest = new VacationRequest();
+
+        vacationRequest.setEmp_id(vacationRequestDTO.getEmpId());
+        vacationRequest.setVacation_request_start(vacationRequestDTO.getVacationRequestStart());
+        vacationRequest.setVacation_request_end(vacationRequestDTO.getVacationRequestEnd());
+        vacationRequest.setVacation_request_type(vacationRequestDTO.getVacationRequestType());
+        vacationRequest.setVacation_request_reason(vacationRequestDTO.getVacationRequestReason());
+        vacationRequest.setVacation_request_status(vacationRequestDTO.getVacationRequestStatus());
+
+        vacationRequest.setVacation_request_apply_time(LocalDateTime.now()); // 예시로 현재 시간 설정
+
+        vacationRequestRepository.save(vacationRequest);
+
+        return "redirect:/vacation_requests/list";
+    }
 }

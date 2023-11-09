@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 @Table(name = "vacation_request")
 @Builder
 @Getter
+@Setter
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
