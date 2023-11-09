@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<H1> 휴가 신청을 볼수 있는 페이지</H1>
+
+
+<table border="1">
+    <th>신청자 id</th>
+    <th>시작 날짜</th>
+    <th>종료 날짜</th>
+    <th>휴가 종류</th>
+    <th>휴가 사유</th>
+    <th>휴가 진행도</th>
+    <th>휴가 신청 시간</th>
+    <th>휴가 처리 시간</th>
+    <tr th:each="list : ${findAll}">
+
+
+    <td th:text="${list.emp_id}"></td>
+    <td th:text="${list.vacation_request_start}"></td>
+    <td th:text="${list.vacation_request_end}"></td>
+    <td th:text="${list.vacation_request_type}"></td>
+    <td th:text="${list.vacation_request_reason}"></td>
+    <td th:text="${list.vacation_request_status}"></td>
+    <td th:text="${list.vacation_request_apply_time}"></td>
+    <td th:text="${list.vacation_request_process_time}"></td>
+    </tr>
+</table>
+</body>
+</html>
