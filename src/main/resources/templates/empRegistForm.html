@@ -1,0 +1,32 @@
+<!--suppress ThymeleafNonHtml -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>직원등록</h1>
+    <form th:action="@{/empRegist}" method="post" th:object="${emp}">
+        <table>
+            <tr>
+                <td>사번</td>
+                <td><input type="text" th:field="*{emp_id}"></td>
+            </tr>
+            <tr>
+                <td>이름</td>
+                <td><input type="text" th:field="*{emp_name}"></td>
+            </tr>
+            <tr>
+                <td>직급</td>
+                <td><input type="text" th:field="*{emp_position}"></td>
+            </tr>
+            <tr>
+                <td>전화번호</td>
+                <td><input type="text" th:field="*{emp_phone}"></td>
+            </tr>
+        </table>
+        <input type="submit" value="등록">
+    </form>
+</body>
+</html>

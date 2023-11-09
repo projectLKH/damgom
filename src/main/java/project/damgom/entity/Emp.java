@@ -28,4 +28,12 @@ public class Emp {
     private String emp_password;
     @Column
     private String emp_phone;
+
+    public Emp(int emp_id, String emp_name, String emp_position, String emp_password, String emp_phone) {
+        this.emp_id = emp_id;
+        this.emp_name = emp_name;
+        this.emp_position = emp_position;
+        this.emp_password = emp_password;
+        this.emp_phone = emp_phone;
+    }
 }
