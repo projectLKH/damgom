@@ -16,22 +16,23 @@ import java.time.LocalDateTime;
 public class WorkRecord{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int work_record_key;
-    @Column
-    private int emp_id;
-    @Column
-    private LocalDate work_record_date;
-    @Column
-    private LocalDateTime work_record_clock_in;
-    @Column
-    private LocalDateTime work_record_clock_out;
-    @Column
-    private LocalDateTime work_record_leave;
-    @Column
-    private LocalDateTime work_record_return;
-    @Column
-    private LocalDateTime work_record_over_start;
-    @Column
-    private LocalDateTime work_record_over_end;
+    @Column(name = "work_record_key")
+    private int workRecordKey;
+    @Column(name = "emp_id")
+    private int empId;
+    @Column(name = "work_record_date")
+    private LocalDate workRecordDate;
+    @Column(name = "work_record_clock_in")
+    private LocalDateTime workRecordClockIn;
+    @Column(name = "work_record_clock_out")
+    private LocalDateTime workRecordClockOut;
+    @Column(name = "work_record_leave")
+    private LocalDateTime workRecordLeave;
+    @Column(name = "work_record_return")
+    private LocalDateTime workRecordReturn;
+    @Column(name = "work_record_over_start")
+    private LocalDateTime workRecordOverStart;
+    @Column(name = "work_record_over_end")
+    private LocalDateTime workRecordOverEnd;
 
 }

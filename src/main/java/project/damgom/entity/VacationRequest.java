@@ -17,37 +17,30 @@ import java.time.LocalDateTime;
 public class VacationRequest {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int vacation_request_key;
-
-
-    @Column
+    @Column(name = "vacation_request_key")
+    private int vacationRequestKey;
+    @Column(name = "emp_id")
     //신청직원 id
-    private int emp_id;
-
-    @Column
+    private int empId;
+    @Column(name = "vacation_request_start")
     //휴가 시작일
-    private LocalDate vacation_request_start;
-    @Column
+    private LocalDate vacationRequestStart;
+    @Column(name = "vacation_request_end")
     //휴가 종료일
-    private LocalDate vacation_request_end;
-
-    @Column
+    private LocalDate vacationRequestEnd;
+    @Column(name = "vacation_request_type")
     //휴가의 종류
-    private String vacation_request_type;
-
-    @Column
+    private String vacationRequestType;
+    @Column(name = "vacation_request_reason")
     //휴가 사유
-    private String vacation_request_reason;
-
-    @Column
+    private String vacationRequestReason;
+    @Column(name = "vacation_request_status")
     //휴가 진행 상태
-    private String vacation_request_status;
-
-    @Column
+    private String vacationRequestStatus;
+    @Column(name = "vacation_request_apply_time")
     //신청 시간
-    private LocalDateTime vacation_request_apply_time;
-
-    @Column
+    private LocalDateTime vacationRequestApplyTime;
+    @Column(name = "vacation_request_process_time")
     //처리 시간
-    private LocalDateTime vacation_request_process_time;
+    private LocalDateTime vacationRequestProcessTime;
 }

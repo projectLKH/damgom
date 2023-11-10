@@ -38,14 +38,14 @@ public class VacationRequestRepositoryController {
     public String vacation_submitted(VacationRequestDTO vacationRequestDTO){
         VacationRequest vacationRequest = new VacationRequest();
 
-        vacationRequest.setEmp_id(vacationRequestDTO.getEmpId());
-        vacationRequest.setVacation_request_start(vacationRequestDTO.getVacationRequestStart());
-        vacationRequest.setVacation_request_end(vacationRequestDTO.getVacationRequestEnd());
-        vacationRequest.setVacation_request_type(vacationRequestDTO.getVacationRequestType());
-        vacationRequest.setVacation_request_reason(vacationRequestDTO.getVacationRequestReason());
-        vacationRequest.setVacation_request_status(vacationRequestDTO.getVacationRequestStatus());
+        vacationRequest.setEmpId(vacationRequestDTO.getEmpId());
+        vacationRequest.setVacationRequestStart(vacationRequestDTO.getVacationRequestStart());
+        vacationRequest.setVacationRequestEnd(vacationRequestDTO.getVacationRequestEnd());
+        vacationRequest.setVacationRequestType(vacationRequestDTO.getVacationRequestType());
+        vacationRequest.setVacationRequestReason(vacationRequestDTO.getVacationRequestReason());
+        vacationRequest.setVacationRequestStatus(vacationRequestDTO.getVacationRequestStatus());
 
-        vacationRequest.setVacation_request_apply_time(LocalDateTime.now()); // 예시로 현재 시간 설정
+        vacationRequest.setVacationRequestApplyTime(LocalDateTime.now()); // 예시로 현재 시간 설정
 
         vacationRequestRepository.save(vacationRequest);
 

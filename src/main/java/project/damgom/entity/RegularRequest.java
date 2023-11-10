@@ -16,25 +16,26 @@ import java.time.LocalDateTime;
 public class RegularRequest {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int regular_request_key;
-    @Column
-    private int emp_id;
-    @Column
-    private int regular_request_id;
-    @Column
-    private LocalDate regular_request_date;
-    @Column
-    private LocalDateTime regular_request_clock_in;
-    @Column
-    private LocalDateTime regular_request_clock_out;
-    @Column
-    private LocalDateTime regular_request_break_start;
-    @Column
-    private LocalDateTime regular_request_break_end;
-    @Column
-    private String regular_request_status;
-    @Column
-    private LocalDateTime regular_request_apply_time;
-    @Column
-    private LocalDateTime regular_request_process_time;
+    @Column(name = "regular_request_key")
+    private int regularRequestKey;
+    @Column(name = "emp_id")
+    private int empId;
+    @Column(name = "regular_request_id")
+    private int regularRequestId;
+    @Column(name = "regular_request_date")
+    private LocalDate regularRequestDate;
+    @Column(name = "regular_request_clock_in")
+    private LocalDateTime regularRequestClockIn;
+    @Column(name = "regular_request_clock_out")
+    private LocalDateTime regularRequestClockOut;
+    @Column(name = "regular_request_break_start")
+    private LocalDateTime regularRequestBreakStart;
+    @Column(name = "regular_request_break_end")
+    private LocalDateTime regularRequestBreakEnd;
+    @Column(name = "regular_request_status")
+    private String regularRequestStatus;
+    @Column(name = "regular_request_apply_time")
+    private LocalDateTime regularRequestApplyTime;
+    @Column(name = "regular_request_process_time")
+    private LocalDateTime regularRequestProcessTime;
 }

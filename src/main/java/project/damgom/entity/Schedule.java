@@ -16,27 +16,28 @@ import java.time.LocalDateTime;
 public class Schedule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int schedule_key;
-    @Column
-    private int emp_id;
-    @Column
-    private LocalDate schedule_date;
-    @Column
-    private LocalDateTime schedule_clock_in;
-    @Column
-    private LocalDateTime schedule_clock_out;
-    @Column
-    private LocalDateTime schedule_break_start;
-    @Column
-    private LocalDateTime schedule_break_end;
-    @Column
-    private LocalDateTime schedule_leave;
-    @Column
-    private LocalDateTime schedule_return;
-    @Column
-    private LocalDateTime schedule_over_start;
-    @Column
-    private LocalDateTime schedule_over_end;
-    @Column
-    private LocalDateTime schedule_time;
+    @Column(name = "schedule_key")
+    private int scheduleKey;
+    @Column(name = "emp_id")
+    private int empId;
+    @Column(name = "schedule_date")
+    private LocalDate scheduleDate;
+    @Column(name = "schedule_clock_in")
+    private LocalDateTime scheduleClockIn;
+    @Column(name = "schedule_clock_out")
+    private LocalDateTime scheduleClockOut;
+    @Column(name = "schedule_break_start")
+    private LocalDateTime scheduleBreakStart;
+    @Column(name = "schedule_break_end")
+    private LocalDateTime scheduleBreakEnd;
+    @Column(name = "schedule_leave")
+    private LocalDateTime scheduleLeave;
+    @Column(name = "schedule_return")
+    private LocalDateTime scheduleReturn;
+    @Column(name = "schedule_over_start")
+    private LocalDateTime scheduleOverStart;
+    @Column(name = "schedule_over_end")
+    private LocalDateTime scheduleOverEnd;
+    @Column(name = "schedule_time")
+    private LocalDateTime scheduleTime;
 }

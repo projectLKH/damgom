@@ -9,24 +9,26 @@
     <table th:each = "empList : ${empList}">
         <tr>
             <td>사번</td>
-            <td>[[${empList.emp_id}]]</td>
+            <td>[[${empList.empId}]]</td>
         </tr>
         <tr>
             <td>이름</td>
-            <td>[[${empList.emp_name}]]</td>
+            <td>[[${empList.empName}]]</td>
         </tr>
         <tr>
             <td>직급</td>
-            <td>[[${empList.emp_position}]]</td>
+            <td>[[${empList.empPosition}]]</td>
         </tr>
         <tr>
             <td>로그인 비밀번호</td>
-            <td>[[${empList.emp_password}]]</td>
+            <td>[[${empList.empPassword}]]</td>
         </tr>
         <tr>
             <td>전화번호</td>
-            <td>[[${empList.emp_phone}]]</td>
+            <td>[[${empList.empPhone}]]</td>
         </tr>
     </table>
+    <a href="/test">링크페이지로</a>
+
 </body>
 </html>

@@ -15,19 +15,19 @@ import java.time.LocalDateTime;
 public class Mail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int mail_key;
-
-    @Column
-    private int mail_id;
-    @Column
-    private String mail_title;
-    @Column
-    private String mail_content;
-    @Column
-    private String mail_sender;
-    @Column
-    private String mail_receiver;
-    @Column
-    private LocalDateTime mail_time;
+    @Column(name = "mail_key")
+    private int mailKey;
+    @Column(name = "mail_id")
+    private int mailId;
+    @Column(name = "mail_title")
+    private String mailTitle;
+    @Column(name = "mail_content")
+    private String mailContent;
+    @Column(name = "mail_sender")
+    private String mailSender;
+    @Column(name = "mail_receiver")
+    private String mailReceiver;
+    @Column(name = "mail_time")
+    private LocalDateTime mailTime;
 
 }

@@ -16,9 +16,10 @@ public class Holiday {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int holiday_key;
-    @Column
-    private String holiday_name;
-    @Column
-    private LocalDate holiday_date;
+    @Column(name = "holiday_key")
+    private int holidayKey;
+    @Column(name = "holiday_name")
+    private String holidayName;
+    @Column(name = "holiday_date")
+    private LocalDate holidayDate;
 }

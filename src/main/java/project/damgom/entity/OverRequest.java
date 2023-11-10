@@ -16,22 +16,22 @@ import java.time.LocalDateTime;
 public class OverRequest {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int over_request_key;
-
-    @Column
-    private int emp_id;
-    @Column
-    private LocalDate over_request_date;
-    @Column
-    private LocalDateTime over_request_start;
-    @Column
-    private LocalDateTime over_request_end;
-    @Column
-    private String over_request_time;
-    @Column
-    private String over_request_status;
-    @Column
-    private LocalDateTime over_request_apply_time;
-    @Column
-    private LocalDateTime over_request_process_time;
+    @Column(name = "over_request_key")
+    private int overRequestKey;
+    @Column(name = "emp_id")
+    private int empId;
+    @Column(name = "over_request_date")
+    private LocalDate overRequestDate;
+    @Column(name = "over_request_start")
+    private LocalDateTime overRequestStart;
+    @Column(name = "over_request_end")
+    private LocalDateTime overRequestEnd;
+    @Column(name = "over_request_time")
+    private String overRequestTime;
+    @Column(name = "over_request_status")
+    private String overRequestStatus;
+    @Column(name = "over_request_apply_time")
+    private LocalDateTime overRequestApplyTime;
+    @Column(name = "over_request_process_time")
+    private LocalDateTime overRequestProcessTime;
 }

@@ -1,4 +1,3 @@
-<!--suppress ThymeleafNonHtml -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,26 +6,28 @@
 </head>
 <body>
     <h1>직원등록</h1>
-    <form th:action="@{/empRegist}" method="post" th:object="${emp}">
+    <form th:object="${emp}" method="post" action="/empInsert">
         <table>
             <tr>
+                <!--emp_id가 숫자라서 0이 먼저 홀드됨-->
                 <td>사번</td>
-                <td><input type="text" th:field="*{emp_id}"></td>
+                <td><input type="number" th:field="*{empId}"></td>
             </tr>
             <tr>
                 <td>이름</td>
-                <td><input type="text" th:field="*{emp_name}"></td>
+                <td><input type="text" th:field="*{empName}"></td>
             </tr>
             <tr>
                 <td>직급</td>
-                <td><input type="text" th:field="*{emp_position}"></td>
+                <td><input type="text" th:field="*{empPosition}"></td>
             </tr>
             <tr>
                 <td>전화번호</td>
-                <td><input type="text" th:field="*{emp_phone}"></td>
+                <td><input type="text" th:field="*{empPhone}"></td>
             </tr>
         </table>
         <input type="submit" value="등록">
     </form>
+<a href="/test">링크페이지로</a>
 </body>
 </html>
