@@ -2,9 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>휴가 신청</title>
 </head>
 <body>
 <h1>휴가 신청</h1>
+<form th:action="@{/vacations/request}" method="post" th:object="${vacationRequest}">
+    <label for="empId">Employee ID:</label>
+    <input type="text" id="empId" name="empId" th:field="*{empId}" required><br>
+
+    <label for="vacationRequestStart">Start Date:</label>
+    <input type="date" id="vacationRequestStart" name="vacationRequestStart" th:field="*{vacationRequestStart}" required><br>
+
+    <label for="vacationRequestEnd">End Date:</label>
+    <input type="date" id="vacationRequestEnd" name="vacationRequestEnd" th:field="*{vacationRequestEnd}" required><br>
+
+    <label for="vacationRequestType">Vacation Type:</label>
+    <input type="text" id="vacationRequestType" name="vacationRequestType" th:field="*{vacationRequestType}" required><br>
+
+    <label for="vacationRequestReason">Reason:</label>
+    <textarea id="vacationRequestReason" name="vacationRequestReason" th:field="*{vacationRequestReason}" required></textarea><br>
+
+    <label for="vacationRequestStatus">Status:</label>
+    <input type="text" id="vacationRequestStatus" name="vacationRequestStatus" th:field="*{vacationRequestStatus}" required><br>
+
+    <button type="submit">신청하기</button>
+</form>
 </body>
 </html>

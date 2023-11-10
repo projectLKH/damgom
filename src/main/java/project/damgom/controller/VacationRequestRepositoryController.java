@@ -1,7 +1,9 @@
 package project.damgom.controller;
 
 
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +18,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Controller
-@RequestMapping("vacation")
+@RequestMapping("vacations")
 public class VacationRequestRepositoryController {
     @Autowired
     VacationRequestRepository vacationRequestRepository;
@@ -32,10 +34,9 @@ public class VacationRequestRepositoryController {
         return "/vacationRequest/list";
     }
 
-
     //직원 이  vacation_submitted 를 하는 save 문구
     @RequestMapping("/request")
-    public String vacation_submitted(VacationRequestDTO vacationRequestDTO){
+    public String vacationSubmitted(VacationRequestDTO vacationRequestDTO){
         VacationRequest vacationRequest = new VacationRequest();
 
         vacationRequest.setEmpId(vacationRequestDTO.getEmpId());
@@ -44,11 +45,16 @@ public class VacationRequestRepositoryController {
         vacationRequest.setVacationRequestType(vacationRequestDTO.getVacationRequestType());
         vacationRequest.setVacationRequestReason(vacationRequestDTO.getVacationRequestReason());
         vacationRequest.setVacationRequestStatus(vacationRequestDTO.getVacationRequestStatus());
-
         vacationRequest.setVacationRequestApplyTime(LocalDateTime.now()); // 예시로 현재 시간 설정
 
         vacationRequestRepository.save(vacationRequest);
 
-        return "redirect:/vacation_requests/list";
+        return "redirect:/vacation_requests/submitted";
+    }
+
+    //getMapping를 위해 만듬
+    @GetMapping("/request")
+    public String vacation_submitted(){
+        return "/vacationRequest/submitted";
     }
 }
