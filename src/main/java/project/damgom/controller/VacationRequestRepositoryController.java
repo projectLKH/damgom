@@ -1,60 +1,53 @@
 package project.damgom.controller;
 
 
-import lombok.Getter;
+import lombok.extern.log4j.Log4j;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import project.damgom.Service.DateService;
 import project.damgom.Service.VacationRequestRepositoryService;
-import project.damgom.dto.VacationRequestDTO;
 import project.damgom.entity.VacationRequest;
 import project.damgom.repository.VacationRequestRepository;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
-
 @Controller
-@RequestMapping("vacations")
+@Slf4j
 public class VacationRequestRepositoryController {
+
     @Autowired
-    VacationRequestRepository vacationRequestRepository;
+    private VacationRequestRepository vacationRequestRepository;
     @Autowired
-    VacationRequestRepositoryService vacationRequestRepositoryService;
+    private VacationRequestRepositoryService vacationRequestRepositoryService;
+    @Autowired
+    private DateService dateService;
 
 
-    //vacationRequest table의 내용을 list 로 가져옴
-    @GetMapping("list")
-    public String vacation_List(Model model) {
+    @GetMapping("/list")
+    public String vacationList(Model model) {
         List<VacationRequest> findAll = vacationRequestRepository.findAll();
         model.addAttribute("findAll", findAll);
         return "/vacationRequest/list";
     }
 
-    //직원 이  vacation_submitted 를 하는 save 문구
-    @RequestMapping("/request")
-    public String vacationSubmitted(VacationRequestDTO vacationRequestDTO){
-        VacationRequest vacationRequest = new VacationRequest();
-
-        vacationRequest.setEmpId(vacationRequestDTO.getEmpId());
-        vacationRequest.setVacationRequestStart(vacationRequestDTO.getVacationRequestStart());
-        vacationRequest.setVacationRequestEnd(vacationRequestDTO.getVacationRequestEnd());
-        vacationRequest.setVacationRequestType(vacationRequestDTO.getVacationRequestType());
-        vacationRequest.setVacationRequestReason(vacationRequestDTO.getVacationRequestReason());
-        vacationRequest.setVacationRequestStatus(vacationRequestDTO.getVacationRequestStatus());
-        vacationRequest.setVacationRequestApplyTime(LocalDateTime.now()); // 예시로 현재 시간 설정
-
-        vacationRequestRepository.save(vacationRequest);
-
-        return "redirect:/vacation_requests/submitted";
-    }
-
-    //getMapping를 위해 만듬
     @GetMapping("/request")
-    public String vacation_submitted(){
+    public String showVacationRequestForm(Model model) {
+        VacationRequest vacationRequest = new VacationRequest();
+        model.addAttribute("vacationRequest", vacationRequest);
         return "/vacationRequest/submitted";
     }
+    @PostMapping("/request")
+    public String vacationSubmitted(@ModelAttribute VacationRequest vacationRequest) {
+
+        return "redirect:/";
+    }
+
+
 }

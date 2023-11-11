@@ -1,31 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>휴가 신청</title>
+    <title>Vacation Request Form</title>
 </head>
 <body>
-<h1>휴가 신청</h1>
-<form th:action="@{/vacations/request}" method="post" th:object="${vacationRequest}">
-    <label for="empId">Employee ID:</label>
-    <input type="text" id="empId" name="empId" th:field="*{empId}" required><br>
+<h1>Vacation Request</h1>
+<form action="/request" method="post" th:object="${vacationRequest}">
+    직원 번호
+    <input type="text" th:field="*{empId}" required><br>
 
-    <label for="vacationRequestStart">Start Date:</label>
-    <input type="date" id="vacationRequestStart" name="vacationRequestStart" th:field="*{vacationRequestStart}" required><br>
+    휴가 시작 날짜
+    <input type="date" th:field="*{vacationRequestStart}" pattern="yyyy-MM-dd" required><br>
 
-    <label for="vacationRequestEnd">End Date:</label>
-    <input type="date" id="vacationRequestEnd" name="vacationRequestEnd" th:field="*{vacationRequestEnd}" required><br>
+    휴가 종료 날짜
+    <input type="date" th:field="*{vacationRequestEnd}" pattern="yyyy-MM-dd" required><br>
 
-    <label for="vacationRequestType">Vacation Type:</label>
-    <input type="text" id="vacationRequestType" name="vacationRequestType" th:field="*{vacationRequestType}" required><br>
+    휴가 종류
+    <input type="text" th:field="*{vacationRequestType}" required><br>
 
-    <label for="vacationRequestReason">Reason:</label>
-    <textarea id="vacationRequestReason" name="vacationRequestReason" th:field="*{vacationRequestReason}" required></textarea><br>
+    휴가 사유
+    <textarea th:field="*{vacationRequestReason}" required></textarea><br>
 
-    <label for="vacationRequestStatus">Status:</label>
-    <input type="text" id="vacationRequestStatus" name="vacationRequestStatus" th:field="*{vacationRequestStatus}" required><br>
+    휴가 진행상황
+    <input type="text" th:field="*{vacationRequestStatus}" required><br>
 
-    <button type="submit">신청하기</button>
+    <button type="submit">신청</button>
 </form>
 </body>
 </html>
