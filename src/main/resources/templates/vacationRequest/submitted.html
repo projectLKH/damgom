@@ -11,19 +11,17 @@
     <input type="text" th:field="*{empId}" required><br>
 
     휴가 시작 날짜
-    <input type="date" th:field="*{vacationRequestStart}" pattern="yyyy-MM-dd" required><br>
+    <input type="date" th:field="*{vacationRequestStart}" required><br>
 
     휴가 종료 날짜
-    <input type="date" th:field="*{vacationRequestEnd}" pattern="yyyy-MM-dd" required><br>
+    <input type="date" th:field="*{vacationRequestEnd}" required><br>
 
     휴가 종류
-    <input type="text" th:field="*{vacationRequestType}" required><br>
-
+    <select th:field="*{vacationRequestType}" required>
+        <option th:each="type : ${vacationTypes}" th:value="${type}" th:text="${type}"></option>
+    </select><br>
     휴가 사유
     <textarea th:field="*{vacationRequestReason}" required></textarea><br>
-
-    휴가 진행상황
-    <input type="text" th:field="*{vacationRequestStatus}" required><br>
 
     <button type="submit">신청</button>
 </form>

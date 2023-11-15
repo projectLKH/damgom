@@ -1,6 +1,7 @@
 package project.damgom.entity;
 
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -22,25 +23,35 @@ public class VacationRequest {
     @Column(name = "emp_id")
     //신청직원 id
     private int empId;
-    @Column(name = "vacation_request_start")
+
     //휴가 시작일
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(name = "vacation_request_start")
     private LocalDate vacationRequestStart;
-    @Column(name = "vacation_request_end")
+
     //휴가 종료일
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(name = "vacation_request_end")
     private LocalDate vacationRequestEnd;
-    @Column(name = "vacation_request_type")
+
     //휴가의 종류
+    @Column(name = "vacation_request_type")
     private String vacationRequestType;
-    @Column(name = "vacation_request_reason")
+
     //휴가 사유
+    @Column(name = "vacation_request_reason")
     private String vacationRequestReason;
-    @Column(name = "vacation_request_status")
+
     //휴가 진행 상태
+    @Column(name = "vacation_request_status")
     private String vacationRequestStatus;
-    @Column(name = "vacation_request_apply_time")
+
     //신청 시간
+    @Column(name = "vacation_request_apply_time")
     private LocalDateTime vacationRequestApplyTime;
-    @Column(name = "vacation_request_process_time")
+
     //처리 시간
+    @Column(name = "vacation_request_process_time")
     private LocalDateTime vacationRequestProcessTime;
+
 }
