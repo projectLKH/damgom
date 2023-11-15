@@ -47,4 +47,15 @@ public class EmpServiceImpl implements EmpService {
         session.setAttribute("emp", emp);
     }
 
+    @Override
+    public String findEmpPassword(String empId, String empName, String empPhone) {
+        System.out.println(empId+"******************************");
+        Optional<Emp> emp = empRepository.findByEmpId(Integer.parseInt(empId));
+        if(emp.isPresent()) {
+            if(empName.equals(emp.get().getEmpName()) && empPhone.equals(emp.get().getEmpPhone())) {
+                return emp.get().getEmpPassword();
+            } else return "정보가 일치하지 않습니다.";
+        } else return "정보가 일치하지 않습니다.";
+    }
+
 }

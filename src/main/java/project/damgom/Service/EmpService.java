@@ -14,7 +14,10 @@ public interface EmpService {
     //사원 목록
     List<Emp> findAllEmp();
 
-    //로그인용
+    //로그인
     String login(String empId, String password);
     void setLoginSession(HttpSession session, int empId);
+
+    //비밀번호 찾기
+    String findEmpPassword(String empId, String empName, String empPhone);
 }

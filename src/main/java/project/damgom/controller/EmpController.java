@@ -74,4 +74,16 @@ public class EmpController {
         session.invalidate();
         return "emp/loginForm";
     }
+
+    @GetMapping("/findEmpPassword")
+    public String findEmpPasswordForm() {
+        return "emp/findEmpPasswordForm";
+    }
+
+    @PostMapping("/findEmpPassword")
+    public String findEmpPassword(String empId, String empName, String empPhone, Model model) {
+        String empPassword = empService.findEmpPassword(empId, empName, empPhone);
+        model.addAttribute("empPassword", empPassword);
+        return "emp/findEmpPassword";
+    }
 }
