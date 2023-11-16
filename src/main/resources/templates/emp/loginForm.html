@@ -17,9 +17,7 @@
         </tr>
     </table>
     <input type="submit" value="로그인">
-    <th:block>
-        [[${emp}]]
-    </th:block>
+    <a href="/findEmpPassword" target="_blank"><button type="button">비밀번호 찾기</button></a><br>
 </form>
 <script th:inline="javascript">
     if([[${msg}]]!=null)

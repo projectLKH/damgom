@@ -28,6 +28,10 @@
         </table>
         <input type="submit" value="등록">
     </form>
+    <script th:inlin="javascript">
+        if(![[${empSuccess}]])
+            alert("등록에 실패했습니다");
+    </script>
 <a href="/test">링크페이지로</a>
 </body>
 </html>

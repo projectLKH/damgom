@@ -29,9 +29,14 @@ public class EmpController {
     }
 
     @PostMapping("/empInsert")
-    public String empInsertMethod(@ModelAttribute("emp") Emp emp) {
-        empService.empInsert(emp);
-        return "redirect:/empList";
+    public String empInsertMethod(@ModelAttribute Emp emp, Model model) {
+        boolean empSuccess = empService.empInsert(emp);
+        if(empSuccess) {
+            return "redirect:/empList";
+        } else {
+            model.addAttribute("empSuccess", empSuccess);
+            return "emp/empInsertForm";
+        }
     }
     //
     // *************직원목록******************
@@ -47,10 +52,12 @@ public class EmpController {
     // *************로그인******************
     //
     @GetMapping("/login")
-    public String loginForm(HttpSession session) {
-        if(session.getAttribute("emp")==null) {
+    public String loginForm(HttpSession session, Model model) {
+        Object emp = session.getAttribute("emp");
+        if(emp ==null) {
             return "emp/loginForm";
         } else {
+            model.addAttribute("emp", emp);
             return "emp/test";
         }
     }
@@ -63,6 +70,7 @@ public class EmpController {
 
         if(Boolean.parseBoolean(msg)) {
             empService.setLoginSession(session, Integer.parseInt(id));
+            model.addAttribute("emp", session.getAttribute("emp"));
             return "emp/test";
         } else {
             model.addAttribute("msg", msg);

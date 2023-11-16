@@ -18,9 +18,12 @@ public class EmpServiceImpl implements EmpService {
     EmpRepository empRepository;
 
     @Override
-    public void empInsert(Emp emp) {
+    public boolean empInsert(Emp emp) {
+        if(empRepository.findByEmpId(emp.getEmpId()).isEmpty()) {
             emp.setEmpPassword("1234");
             empRepository.save(emp);
+            return true;
+        } else return false;
     }
 
     @Override
@@ -53,7 +56,7 @@ public class EmpServiceImpl implements EmpService {
         Optional<Emp> emp = empRepository.findByEmpId(Integer.parseInt(empId));
         if(emp.isPresent()) {
             if(empName.equals(emp.get().getEmpName()) && empPhone.equals(emp.get().getEmpPhone())) {
-                return emp.get().getEmpPassword();
+                return "비밀번호는 " + emp.get().getEmpPassword() + "입니다.";
             } else return "정보가 일치하지 않습니다.";
         } else return "정보가 일치하지 않습니다.";
     }

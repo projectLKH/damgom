@@ -9,7 +9,7 @@ import java.util.List;
 @Service
 public interface EmpService {
     //사원등록
-    void empInsert(Emp emp);
+    boolean empInsert(Emp emp);
 
     //사원 목록
     List<Emp> findAllEmp();
