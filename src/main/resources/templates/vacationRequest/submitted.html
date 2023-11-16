@@ -2,28 +2,72 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Vacation Request Form</title>
+    <title>Vacation Request</title>
+    <script type="text/javascript" src="/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 <body>
-<h1>Vacation Request</h1>
-<form action="/request" method="post" th:object="${vacationRequest}">
-    직원 번호
-    <input type="text" th:field="*{empId}" required><br>
+<h1>휴가 신청</h1>
+<table border="1" style="width: 800px;">
+    <form id="myForm" action="/request" method="post" th:object="${vacationRequest}">
+        <tr>
+            <td>직원 번호</td>
+            <td><input type="text" th:field="*{empId}" required></td>
+        </tr>
+        <tr>
+            <td>휴가 시작 날짜</td>
+            <td><input type="date" th:field="*{vacationRequestStart}" required></td>
+        </tr>
+        <tr>
+            <td>휴가 종료 날짜</td>
+            <td><input type="date" th:field="*{vacationRequestEnd}" required></td>
+        </tr>
+        <tr>
+            <td>휴가 종류</td>
+            <td>
+                <select th:field="*{vacationRequestType}" required>
+                    <option th:each="type : ${vacationTypes}" th:value="${type}" th:text="${type}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>휴가 사유</td>
+            <td>
+                <div id="smarteditor">
+                    <textarea name="editorTxt" id="editorTxt" rows="20" cols="10" placeholder="내용을 입력해주세요" style="width: 500px;"></textarea>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button type="submit">신청</button>
+            </td>
+        </tr>
+    </form>
+</table>
 
-    휴가 시작 날짜
-    <input type="date" th:field="*{vacationRequestStart}" required><br>
+<!-- 스마트 에디터 초기화 및 설정 스크립트 -->
+<script>
+    let oEditors = [];
 
-    휴가 종료 날짜
-    <input type="date" th:field="*{vacationRequestEnd}" required><br>
+    function submitContent() {
+        oEditors.getById["editorTxt"].exec("UPDATE_CONTENTS_FIELD", []);  // 에디터의 내용을 textarea에 적용
+        document.getElementById("myForm").submit();  // 폼 제출
+    }
 
-    휴가 종류
-    <select th:field="*{vacationRequestType}" required>
-        <option th:each="type : ${vacationTypes}" th:value="${type}" th:text="${type}"></option>
-    </select><br>
-    휴가 사유
-    <textarea th:field="*{vacationRequestReason}" required></textarea><br>
+    smartEditor = function () {
+        console.log("Naver SmartEditor");
+        nhn.husky.EZCreator.createInIFrame({
+            oAppRef: oEditors,
+            elPlaceHolder: "editorTxt",
+            sSkinURI: "/smarteditor/SmartEditor2Skin.html",
+            fCreator: "createSEditor2"
+        });
+    };
 
-    <button type="submit">신청</button>
-</form>
+    $(document).ready(function () {
+        smartEditor();  // 스마트 에디터 초기화
+    });
+</script>
 </body>
 </html>
