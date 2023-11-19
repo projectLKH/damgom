@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>부서 목록</h1>
+<table th:each = "deptList : ${deptList}">
+    <tr>
+        <td>사번</td>
+        <td>[[${deptList.deptId}]]</td>
+    </tr>
+    <tr>
+        <td>이름</td>
+        <td>[[${deptList.deptName}]]</td>
+    </tr>
+</table>
+<a href="/test">링크페이지로</a>
+</body>
+</html>

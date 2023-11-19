@@ -1,4 +1,4 @@
-package project.damgom.Service;
+package project.damgom.service;
 
 
 import lombok.ToString;
@@ -35,6 +35,9 @@ public class VacationRequestRepositoryService {
     public List<String> getVacationTypes() {
         return Arrays.asList("연차", "병가", "반차");
     }
+
+
+    //
     public void save(VacationRequest vacationRequest) {
         // 현재 날짜와 시간을 얻기
         LocalDateTime now = LocalDateTime.now();
@@ -44,11 +47,10 @@ public class VacationRequestRepositoryService {
         LocalDateTime parsedDateTime = LocalDateTime.parse(formattedDateTime, formatter);
         // vacationRequest의 vacationRequestApplyTime에 설정
         vacationRequest.setVacationRequestApplyTime(parsedDateTime);
+
+
         //사원이 휴가 신청시 진행도가  [ 요청중 ] 로 넘어가게 하는 코드
         vacationRequest.setVacationRequestStatus("요청중");
-
-
-
         vacationRequestRepository.save(vacationRequest);
     }
 }

@@ -21,4 +21,9 @@ public class Dept {
     private int deptId;
     @Column(name = "dept_name")
     private String deptName;
+
+    public Dept(int deptId, String deptName) {
+        this.deptId = deptId;
+        this.deptName = deptName;
+    }
 }

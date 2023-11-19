@@ -1,4 +1,4 @@
-package project.damgom.Service;
+package project.damgom.service;
 
 import org.springframework.stereotype.Service;
 

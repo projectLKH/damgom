@@ -6,8 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import project.damgom.Service.EmpServiceImpl;
 import project.damgom.entity.Emp;
+import project.damgom.service.EmpServiceImpl;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -18,9 +18,10 @@ public class EmpController {
 
     @Autowired
     EmpServiceImpl empService;
-    //
-    // *************직원등록******************
-    //
+
+    /**
+     * 직원 등록 
+     */
     @GetMapping("/empInsert")
     public String empInsertForm(Model model) {
         Emp emp = new Emp();
@@ -38,9 +39,10 @@ public class EmpController {
             return "emp/empInsertForm";
         }
     }
-    //
-    // *************직원목록******************
-    //
+
+    /**
+     * 직원목록
+     */
     @GetMapping("/empList")
     public String empList(Model model) {
         List<Emp> empList = empService.findAllEmp();
@@ -48,9 +50,9 @@ public class EmpController {
         return "emp/empList";
     }
 
-    //
-    // *************로그인******************
-    //
+    /**
+     * 로그인
+     */
     @GetMapping("/login")
     public String loginForm(HttpSession session, Model model) {
         Object emp = session.getAttribute("emp");
@@ -83,6 +85,9 @@ public class EmpController {
         return "emp/loginForm";
     }
 
+    /**
+     * 비밀번호 찾기
+     */
     @GetMapping("/findEmpPassword")
     public String findEmpPasswordForm() {
         return "emp/findEmpPasswordForm";
