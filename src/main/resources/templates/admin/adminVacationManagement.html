@@ -1,0 +1,68 @@
+<!-- vacationRequest/list.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<H1> 보류중</H1>
+<table border="1">
+  <th>휴가 신청수</th>
+  <th>신청자 id</th>
+  <th>시작 날짜</th>
+  <th>종료 날짜</th>
+  <th>휴가 종류</th>
+  <th>휴가 사유</th>
+  <th>휴가 진행도</th>
+  <th>휴가 승인/거절</th>
+  <th>휴가 신청 시간</th>
+  <th>휴가 처리 시간</th>
+  <tr th:each="vacationRequest : ${requests}">
+    <td th:text="${vacationRequest.getVacationRequestKey}"></td>
+    <td th:text="${vacationRequest.empId}"></td>
+    <td th:text="${vacationRequest.vacationRequestStart}"></td>
+    <td th:text="${vacationRequest.vacationRequestEnd}"></td>
+    <td th:text="${vacationRequest.vacationRequestType}"></td>
+    <td th:text="${vacationRequest.vacationRequestReason}"></td>
+    <td th:text="${vacationRequest.getVacationRequestStatus}"></td>
+    <form action="/updateStatus" method="post">
+      <input type="hidden" name="id" th:value="${vacationRequest.vacationRequestKey}" />
+      <td>
+        <select name="status">
+          <option value="승인">승인</option>
+          <option value="반려">반려</option>
+        </select>
+        <button id="submitButton" type="submit">수정</button>
+      </td>
+    </form>
+    <td th:text="${vacationRequest.vacationRequestApplyTime}"></td>
+    <td th:text="${vacationRequest.vacationRequestProcessTime}"></td>
+  </tr>
+</table>
+<h1>처리 완료</h1>
+<table border="1">
+  <th>휴가 신청수</th>
+  <th>신청자 id</th>
+  <th>시작 날짜</th>
+  <th>종료 날짜</th>
+  <th>휴가 종류</th>
+  <th>휴가 사유</th>
+  <th>휴가 진행도</th>
+  <th>휴가 신청 시간</th>
+  <th>휴가 처리 시간</th>
+  <tr th:each="vacationRequest : ${success}">
+    <td th:text="${vacationRequest.getVacationRequestKey}"></td>
+    <td th:text="${vacationRequest.empId}"></td>
+    <td th:text="${vacationRequest.vacationRequestStart}"></td>
+    <td th:text="${vacationRequest.vacationRequestEnd}"></td>
+    <td th:text="${vacationRequest.vacationRequestType}"></td>
+    <td th:text="${vacationRequest.vacationRequestReason}"></td>
+    <td th:text="${vacationRequest.getVacationRequestStatus}"></td>
+    <td th:text="${vacationRequest.vacationRequestApplyTime}"></td>
+    <td th:text="${vacationRequest.vacationRequestProcessTime}"></td>
+  </tr>
+
+</table>
+</body>
+</html>

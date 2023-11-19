@@ -1,18 +1,12 @@
 package project.damgom.controller;
 
 
-import lombok.extern.log4j.Log4j;
+ import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import project.damgom.Service.DateService;
 import project.damgom.Service.VacationRequestRepositoryService;
 import project.damgom.entity.VacationRequest;
 import project.damgom.repository.VacationRequestRepository;
@@ -24,6 +18,7 @@ import java.util.Arrays;
 import java.util.List;
 @Controller
 @Slf4j
+@ToString
 public class VacationRequestRepositoryController {
 
     @Autowired
@@ -45,7 +40,7 @@ public class VacationRequestRepositoryController {
         model.addAttribute("requests",requests);
         model.addAttribute("success",success);
         model.addAttribute("findAll", findAll);
-        return "/vacationRequest/list";
+        return "/admin/adminVacationManagement";
     }
     @PostMapping("/updateStatus")
     public String updateStatus(
@@ -66,7 +61,7 @@ public class VacationRequestRepositoryController {
         vacationRequest.setVacationRequestProcessTime(LocalDateTime.parse(formattedDateTime, formatter));
 
         vacationRequestRepository.save(vacationRequest);
-        return "redirect:/list";
+        return "redirect:/adminVacationManagement";
     }
 
 
@@ -85,5 +80,12 @@ public class VacationRequestRepositoryController {
     public String vacationSubmitted(@ModelAttribute VacationRequest vacationRequest) {
         vacationRequestRepositoryService.save(vacationRequest);
         return "redirect:/";
+    }
+
+
+    //관리자 페이지
+    @GetMapping("/admin")
+    public String admin(Model model){
+        return "/admin/adminPage";
     }
 }
